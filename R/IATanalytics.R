@@ -1,5 +1,5 @@
 #' Function to Analyze Raw Data from an Implicit Association Test (IAT)
-#' @description This function is designed to analyze raw data from an Implicit Association Test (IAT). The only required input is the name of the dataset, but you can also specify manually the number of trials in your IAT (e.g., for Brief IATs) or whether the participant first saw incongruent category pairings. Refer to the package's DESCRIPTION file for more detailed information (or contact me directly at research@danielstorage.com).
+#' @description This function is designed to analyze raw data from an Implicit Association Test (IAT). The only required input is the name of the dataset, but you can also specify manually the number of trials in your IAT (e.g., for Brief IATs) or whether the participant first saw incongruent category pairings. Refer to the package's DESCRIPTION file for more detailed information (or contact me directly at danielstorage@icloud.com).
 #' @param IAT The name of the dataset to be analyzed.
 #' @param Trials The number of trials across your entire IAT. The default is set to 220, which is typical of most IATs.
 #' @param First Whether participants first sorted Congruent or Incongruent trials. The default is set to Congruent.
