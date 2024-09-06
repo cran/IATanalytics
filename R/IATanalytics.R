@@ -1,5 +1,5 @@
 #' Function to Analyze Raw Data from an Implicit Association Test (IAT)
-#' @description This function is designed to analyze raw data from an Implicit Association Test (IAT). The only required input is the name of the dataset, but you can also specify manually the number of trials in your IAT (e.g., for Brief IATs) or whether the participant first saw incongruent category pairings. Refer to the package's DESCRIPTION file for more detailed information (or contact me directly at danielstorage@icloud.com).
+#' @description This function is designed to analyze raw data from an Implicit Association Test (IAT). The only required input is the name of the dataset, but you can also specify manually the number of trials in your IAT (e.g., for Brief IATs) or whether the participant first saw incongruent category pairings. Refer to the package's DESCRIPTION file for more detailed information, including about the required format of your data.
 #' @param IAT The name of the dataset to be analyzed.
 #' @param Trials The number of trials across your entire IAT. The default is set to 220, which is typical of most IATs.
 #' @param First Whether participants first sorted Congruent or Incongruent trials. The default is set to Congruent.
@@ -57,9 +57,13 @@ IATanalytics <- function(IAT, Trials, First){
 
   # Step 4a: Compute means of correct trials and replace incorrect trials this value + 600
   Block2newmean <- mean(IAT2$RT[IAT2$Block==2 & IAT2$Correct==0]) + 600
+  if(is.nan(Block2newmean)){Block2newmean<-mean(IAT2$RT[IAT2$Block==2])} # default to original block mean if no incorrect answers
   Block3newmean <- mean(IAT2$RT[IAT2$Block==3 & IAT2$Correct==0]) + 600
+  if(is.nan(Block3newmean)){Block3newmean<-mean(IAT2$RT[IAT2$Block==3])}
   Block5newmean <- mean(IAT2$RT[IAT2$Block==5 & IAT2$Correct==0]) + 600
+  if(is.nan(Block5newmean)){Block5newmean<-mean(IAT2$RT[IAT2$Block==5])}
   Block6newmean <- mean(IAT2$RT[IAT2$Block==6 & IAT2$Correct==0]) + 600
+  if(is.nan(Block6newmean)){Block6newmean<-mean(IAT2$RT[IAT2$Block==6])}
 
   i <- 1 # define i counting variable for while loop
   while (i <= nrow(IAT2)) { # create while loop for Block 2 incorrect trial replacement
@@ -110,9 +114,13 @@ IATanalytics <- function(IAT, Trials, First){
 
   # Step 4b: Compute means of correct trials in the odd data frame and replace incorrect trials with this value + 600
   Block2oddnewmean <- mean(IATodd$RT[IATodd$Block==2 & IATodd$Correct==0]) + 600
+  if(is.nan(Block2oddnewmean)){Block2oddnewmean<-mean(IATodd$RT[IATodd$Block==2])}
   Block3oddnewmean <- mean(IATodd$RT[IATodd$Block==3 & IATodd$Correct==0]) + 600
+  if(is.nan(Block3oddnewmean)){Block3oddnewmean<-mean(IATodd$RT[IATodd$Block==3])}
   Block5oddnewmean <- mean(IATodd$RT[IATodd$Block==5 & IATodd$Correct==0]) + 600
+  if(is.nan(Block5oddnewmean)){Block5oddnewmean<-mean(IATodd$RT[IATodd$Block==5])}
   Block6oddnewmean <- mean(IATodd$RT[IATodd$Block==6 & IATodd$Correct==0]) + 600
+  if(is.nan(Block6oddnewmean)){Block6oddnewmean<-mean(IATodd$RT[IATodd$Block==6])}
 
   i <- 1 # define i counting variable for while loop
   while (i <= nrow(IATodd)) { # create while loop for Block 2 incorrect trial replacement
@@ -165,9 +173,13 @@ IATanalytics <- function(IAT, Trials, First){
 
   # Step 4c: Compute means of correct trials in the even data frame and replace incorrect trials with this value + 600
   Block2evennewmean <- mean(IATeven$RT[IATeven$Block==2 & IATeven$Correct==0]) + 600
+  if(is.nan(Block2evennewmean)){Block2evennewmean<-mean(IATeven$RT[IATeven$Block==2])}
   Block3evennewmean <- mean(IATeven$RT[IATeven$Block==3 & IATeven$Correct==0]) + 600
+  if(is.nan(Block3evennewmean)){Block3evennewmean<-mean(IATeven$RT[IATeven$Block==3])}
   Block5evennewmean <- mean(IATeven$RT[IATeven$Block==5 & IATeven$Correct==0]) + 600
+  if(is.nan(Block5evennewmean)){Block5evennewmean<-mean(IATeven$RT[IATeven$Block==5])}
   Block6evennewmean <- mean(IATeven$RT[IATeven$Block==6 & IATeven$Correct==0]) + 600
+  if(is.nan(Block6evennewmean)){Block6evennewmean<-mean(IATeven$RT[IATeven$Block==6])}
 
   i <- 1 # define i counting variable for while loop
   while (i <= nrow(IATeven)) { # create while loop for Block 2 incorrect trial replacement
